@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder as BuilderAlias;
 use Illuminate\Database\Eloquent\Collection as CollectionAlias;
 use Illuminate\Database\Eloquent\Model as ModelAlias;
 use Illuminate\Support\Facades\DB;
+use PDO;
 
 /**
  * Trait AppModel
@@ -84,7 +85,7 @@ trait AppModelHelper
     /**
      * 获取连接的PDO对象
      *
-     * @return \PDO
+     * @return PDO
      * @Author wm
      * @Date   2018/9/5
      * @Time   10:31

@@ -1,0 +1,28 @@
+{
+  "name": "stlswm/laravel-supplement",
+  "description": "ext supplement for laravel",
+  "keywords": [
+    "stlswm",
+    "laravel"
+  ],
+  "authors": [
+    {
+      "name": "wang min",
+      "email": "stlswm@163.com",
+      "homepage": "https://www.stlswm.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "stlswm\\LaravelSupplement\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  }
+}

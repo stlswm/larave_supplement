@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Models;
 
 use Illuminate\Database\Eloquent\Builder as BuilderAlias;
 use Illuminate\Database\Eloquent\Collection as CollectionAlias;

@@ -26,21 +26,12 @@ class Generator
     ];
 
     /**
-     * @param string $msg
-     */
-    protected static function println(string $msg)
-    {
-        echo $msg, "\n";
-    }
-
-    /**
      * 开始生成
      *
      * @param string $readDir
      * @param string $routerDir
      *
-     * @router get /var/www
-     *
+     * @return bool
      * @throws Exception
      */
     public static function start(string $readDir, string $routerDir)
@@ -62,7 +53,7 @@ class Generator
         closedir($dh);
         file_put_contents($routerDir . '/api.php', join("\n", self::$cache['api']));
         file_put_contents($routerDir . '/web.php', join("\n", self::$cache['web']));
-        self::println('done');
+        return TRUE;
     }
 
     /**

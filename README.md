@@ -11,7 +11,7 @@ laravel 模型助手补全laravel缺少的注释
 
 ```
 <?php
-use stlswm\LaravelSupplement\Router;
+use stlswm\LaravelSupplement\Router\Generator;
 Generator::start('控制器根目录','输出配置文件目录');
 ```
 

@@ -7,6 +7,14 @@ laravel 模型助手补全laravel缺少的注释
 
 路由生成器：自动生成laravel路由
 
+用法：
+
+```
+<?php
+use stlswm\LaravelSupplement\Router;
+Generator::start('控制器根目录','输出配置文件目录');
+```
+
 用法在函数注释里增加@router
  
 格式：@router+空格+请求方法+空格+路由

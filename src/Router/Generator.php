@@ -14,11 +14,13 @@ class Generator
 {
     public static $cache = [
         'api' => [
+            '<?php',
             'use Illuminate\Support\Facades\Route;',
             '',
             ''
         ],
         'web' => [
+            '<?php',
             'use Illuminate\Support\Facades\Route;',
             '',
             ''

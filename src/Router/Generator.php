@@ -71,7 +71,7 @@ class Generator
     {
         $namespace = '';
         $controller = '';
-        $router = '';
+        $router = [];
         $fh = fopen($file, 'r');
         if (end(self::$cache['api']) != '') {
             self::$cache['api'][] = '';
@@ -101,17 +101,18 @@ class Generator
                 if (!$routerSearch || count($routerSearch) < 2) {
                     throw new Exception('error format:' . $line);
                 }
-                $router = $routerSearch[0] . '("' . $routerSearch[1] . '",';
+                $router = $routerSearch;
                 continue;
             }
             preg_match('/^(?:\s+)?public function (\w+)(?:\()?/', $line, $matched);
             if ($matched) {
                 $function = $matched[1];
                 if ($router && $function) {
-                    if (strpos($router, '"/api') !== FALSE) {
-                        self::$cache['api'][] = 'Route::' . $router . '"' . $namespace . "\\\\" . $controller . '@' . $function . '");';
+                    if (strpos($router[1], '/api') === 0) {
+                        $router[1] = substr($router[1], 4);
+                        self::$cache['api'][] = "Route::{$router[0]}(\"{$router[1]}\",\"{$namespace}\\\\{$controller}@{$function}\");";
                     } else {
-                        self::$cache['web'][] = 'Route::' . $router . '"' . $namespace . "\\\\" . $controller . '@' . $function . '");';
+                        self::$cache['web'][] = "Route::{$router[0]}(\"{$router[1]}\",\"{$namespace}\\\\{$controller}@{$function}\");";
                     }
                 }
                 $router = '';

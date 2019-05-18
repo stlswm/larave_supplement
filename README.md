@@ -3,21 +3,47 @@
 #### 介绍
 laravel功能补充
 
+laravel 模型助手补全laravel缺少的注释
+
+路由生成器：自动生成laravel路由
+
+用法在函数注释里增加@router
+ 
+格式：@router+空格+请求方法+空格+路由
+
+举例：
+```
+/**
+ * 日志详细信息
+ *
+ * @param string $id
+ *
+ * @return Factory|View|string
+ * @Author wm
+ * @router any /log/logger/info/{id}
+ *
+ */
+``` 
+ 
+生成的api文件内容如下
+
+```
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::any("/api/log/logger/info/{id}","Log\\LoggerController@info");
+```
+
 #### 软件架构
-软件架构说明
+php7.2
 
 
 #### 安装教程
 
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
+```
+composer require stlswm/laravel-supplement
+```
 
 #### 参与贡献
 

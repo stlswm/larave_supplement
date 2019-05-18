@@ -80,8 +80,6 @@ class Generator
         $controller = '';
         $router = '';
         $fh = fopen($file, 'r');
-        self::$cache['api'][] = '';
-        self::$cache['web'][] = '';
         while ($line = fgets($fh)) {
             if (!$namespace) {
                 preg_match('/^(?:\s+)?namespace\s(.*?);/', $line, $matched);

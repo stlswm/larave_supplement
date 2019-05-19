@@ -15,12 +15,14 @@ class Generator
     public static $cache = [
         'api' => [
             '<?php',
+            '',
             'use Illuminate\Support\Facades\Route;',
             '',
             ''
         ],
         'web' => [
             '<?php',
+            '',
             'use Illuminate\Support\Facades\Route;',
             '',
             ''
@@ -109,9 +111,9 @@ class Generator
                 if ($router && $function) {
                     if (strpos($router[1], '/api') === 0) {
                         $router[1] = substr($router[1], 4);
-                        self::$cache['api'][] = "Route::{$router[0]}(\"{$router[1]}\",\"{$namespace}\\\\{$controller}@{$function}\");";
+                        self::$cache['api'][] = "    Route::{$router[0]}(\"{$router[1]}\",\"{$namespace}\\\\{$controller}@{$function}\");";
                     } else {
-                        self::$cache['web'][] = "Route::{$router[0]}(\"{$router[1]}\",\"{$namespace}\\\\{$controller}@{$function}\");";
+                        self::$cache['web'][] = "    Route::{$router[0]}(\"{$router[1]}\",\"{$namespace}\\\\{$controller}@{$function}\");";
                     }
                 }
                 $router = '';

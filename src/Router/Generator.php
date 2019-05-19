@@ -36,7 +36,7 @@ class Generator
      * @return bool
      * @throws Exception
      */
-    public static function start(string $readDir, string $routerDir)
+    public static function start(string $readDir, string $routerDir): bool
     {
         if (!is_dir($readDir)) {
             throw new Exception($readDir . 'is not a dir');
@@ -55,7 +55,7 @@ class Generator
         closedir($dh);
         file_put_contents($routerDir . '/api.php', join("\n", self::$cache['api']));
         file_put_contents($routerDir . '/web.php', join("\n", self::$cache['web']));
-        return true;
+        return TRUE;
     }
 
     /**

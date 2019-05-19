@@ -55,7 +55,7 @@ class Generator
         closedir($dh);
         file_put_contents($routerDir . '/api.php', join("\n", self::$cache['api']));
         file_put_contents($routerDir . '/web.php', join("\n", self::$cache['web']));
-        return TRUE;
+        return true;
     }
 
     /**
@@ -95,13 +95,12 @@ class Generator
                     continue;
                 }
             }
-            preg_match('/^(?:\s+)?\*(?:\s+)?@router\s(.*?)\n$/', $line, $matched);
+            preg_match('/^(?:\s+)?\*(?:\s+)?@router\s+(\w+)\s+(.*?)\n$/', $line, $matched);
             if ($matched) {
-                $routerSearch = explode(' ', $matched[1]);
-                if (!$routerSearch || count($routerSearch) < 2) {
-                    throw new Exception('error format:' . $line);
-                }
-                $router = $routerSearch;
+                $router = [
+                    $matched[1],
+                    $matched[2],
+                ];
                 continue;
             }
             preg_match('/^(?:\s+)?public function (\w+)(?:\()?/', $line, $matched);

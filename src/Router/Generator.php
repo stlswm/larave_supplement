@@ -87,27 +87,28 @@ class Generator
                 if ($matched) {
                     $namespace = str_replace("\\", "\\\\", $matched[1]);
                     $namespace = str_replace('App\\\\Http\\\\Controllers\\\\', '', $namespace);
+                    $namespace = trim($namespace);
                     continue;
                 }
             }
             if (!$controller) {
                 preg_match('/^(?:\s+)?class (\w+){?/', $line, $matched);
                 if ($matched) {
-                    $controller = $matched[1];
+                    $controller = trim($matched[1]);
                     continue;
                 }
             }
             preg_match('/^(?:\s+)?\*(?:\s+)?@router\s+(\w+)\s+(.*?)\n$/', $line, $matched);
             if ($matched) {
                 $router = [
-                    $matched[1],
-                    $matched[2],
+                    trim($matched[1]),
+                    trim($matched[2]),
                 ];
                 continue;
             }
             preg_match('/^(?:\s+)?public function (\w+)(?:\()?/', $line, $matched);
             if ($matched) {
-                $function = $matched[1];
+                $function = trim($matched[1]);
                 if ($router && $function) {
                     if (strpos($router[1], '/api') === 0) {
                         $router[1] = substr($router[1], 4);

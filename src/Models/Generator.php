@@ -61,12 +61,12 @@ class Generator
                             case 'INTEGER':
                             case 'BIGINT':
                             case "TIMESTAMP":
-                                $tmpFile .= " * @param int \${$column}\n";
+                                $tmpFile .= " * @property int \${$column}\n";
                                 break;
                             case 'FLOAT':
                             case 'DOUBLE':
                             case 'DECIMAL':
-                                $tmpFile .= " * @param float \${$column}\n";
+                                $tmpFile .= " * @property float \${$column}\n";
                                 break;
                             case 'DATE':
                             case 'TIME':
@@ -82,7 +82,7 @@ class Generator
                             case 'MEDIUMTEXT':
                             case 'LONGBLOB':
                             case 'LONGTEXT':
-                                $tmpFile .= " * @param string \${$column}\n";
+                                $tmpFile .= " * @property string \${$column}\n";
                                 break;
 
                         }

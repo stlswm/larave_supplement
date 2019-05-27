@@ -82,9 +82,9 @@ class Generator
                             case 'MEDIUMTEXT':
                             case 'LONGBLOB':
                             case 'LONGTEXT':
+                            case 'STRING':
                                 $tmpFile .= " * @property string \${$column}\n";
                                 break;
-
                         }
                     }
                     $tmpFile .= " */\n";

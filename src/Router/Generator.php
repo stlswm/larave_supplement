@@ -86,8 +86,12 @@ class Generator
                 preg_match('/^(?:\s+)?namespace\s(.*?);/', $line, $matched);
                 if ($matched) {
                     $namespace = str_replace("\\", "\\\\", $matched[1]);
-                    $namespace = str_replace('App\\\\Http\\\\Controllers\\\\', '', $namespace);
-                    $namespace = trim($namespace);
+                    if ($namespace == 'App\\\\Http\\\\Controllers') {
+                        $namespace = '';
+                    } else {
+                        $namespace = str_replace('App\\\\Http\\\\Controllers\\\\', '', $namespace);
+                        $namespace = trim($namespace) . '\\\\';
+                    }
                     continue;
                 }
             }
@@ -112,9 +116,9 @@ class Generator
                 if ($router && $function) {
                     if (strpos($router[1], '/api') === 0) {
                         $router[1] = substr($router[1], 4);
-                        self::$cache['api'][] = "Route::{$router[0]}(\"{$router[1]}\", \"{$namespace}\\\\{$controller}@{$function}\");";
+                        self::$cache['api'][] = "Route::{$router[0]}(\"{$router[1]}\", \"{$namespace}{$controller}@{$function}\");";
                     } else {
-                        self::$cache['web'][] = "Route::{$router[0]}(\"{$router[1]}\", \"{$namespace}\\\\{$controller}@{$function}\");";
+                        self::$cache['web'][] = "Route::{$router[0]}(\"{$router[1]}\", \"{$namespace}{$controller}@{$function}\");";
                     }
                 }
                 $router = '';

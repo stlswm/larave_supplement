@@ -27,4 +27,14 @@ class RandomString
     {
         return substr(str_shuffle(self::$seek), 0, $length);
     }
+
+    /**
+     * @param int $length
+     * @return string
+     * @annotation
+     */
+    public static function buildStrForTime(int $length = 18): string
+    {
+        return date('YmdHis') . substr(str_shuffle(self::$seek), 0, $length);
+    }
 }

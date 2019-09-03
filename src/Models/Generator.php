@@ -55,6 +55,7 @@ class Generator
                     foreach ($columnList as $column) {
                         switch (strtoupper($schemaBuilder->getColumnType($model->getTable(), $column))) {
                             case 'TINYINT':
+                            case 'TINYINTEGER':
                             case 'SMALLINT':
                             case 'MEDIUMINT':
                             case 'INT':

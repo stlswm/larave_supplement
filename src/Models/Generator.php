@@ -86,6 +86,9 @@ class Generator
                             case 'STRING':
                                 $tmpFile .= " * @property string \${$column}\n";
                                 break;
+                            default:
+                                $tmpFile .= " * @property \${$column}\n";
+                                break;
                         }
                     }
                     $tmpFile .= " */\n";

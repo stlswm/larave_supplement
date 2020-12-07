@@ -16,8 +16,7 @@
   "require": {
     "php": ">=7.0",
     "ext-json": "*",
-    "ext-pdo": "*",
-    "doctrine/dbal": "^2.9"
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {

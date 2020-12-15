@@ -108,7 +108,7 @@ class GeneratorV8
                         $router[1] = substr($router[1], 4);
                         self::$cache['api'][] = "Route::{$router[0]}(\"{$router[1]}\", [{$namespace}\\{$controller}::class,\"{$function}\"]);";
                     } else {
-                        self::$cache['web'][] = "Route::{$router[0]}(\"{$router[1]}\", [{$namespace}\\{$controller}::class,\"{$function}\");";
+                        self::$cache['web'][] = "Route::{$router[0]}(\"{$router[1]}\", [{$namespace}\\{$controller}::class,\"{$function}\"]);";
                     }
                 }
                 $router = '';

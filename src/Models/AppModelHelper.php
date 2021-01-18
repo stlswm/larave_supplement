@@ -10,23 +10,22 @@ use PDO;
 
 /**
  * Trait AppModel
- *
  * @package   App\Models
- * @property  array $fieldFlag 状态字段[[string]=>[int=>string]]尽量避开使用0=>string类型的值
+ * @property array $fieldFlag 状态字段[[string]=>[int=>string]]尽量避开使用0=>string类型的值
+ * @property array $attributeLabels 栏位label map[string]string
  * @method static ModelAlias|CollectionAlias|static[]|static|null find(mixed $id, array $columns = ['*'])
  * @method static BuilderAlias select(array | mixed $columns = ["*"])
- * @method static BuilderAlias join(string $table, string $first, string | null $operator = NULL, string | null $second = NULL, string $type = 'inner', bool $where = FALSE)
- * @method static BuilderAlias where(mixed $column, mixed $operator = NULL, mixed $value = NULL, string $boolean = 'and')
- * @method static BuilderAlias whereIn(string $column, mixed $values, string $boolean = 'and', bool $not = FALSE)
+ * @method static BuilderAlias join(string $table, string $first, string | null $operator = null, string | null $second = null, string $type = 'inner', bool $where = false)
+ * @method static BuilderAlias where(mixed $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static BuilderAlias whereIn(string $column, mixed $values, string $boolean = 'and', bool $not = false)
  * @method static BuilderAlias whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static BuilderAlias findOrFail($id, $columns = ['*'])
  */
 trait AppModelHelper
 {
     /**
-     * @param string $field
-     * @param mixed  $value
-     *
+     * @param  string  $field
+     * @param  mixed  $value
      * @return string
      * @Author wm
      * @Date   2018/7/13
@@ -47,8 +46,19 @@ trait AppModelHelper
     }
 
     /**
-     * @param array $data
-     *
+     * @param  string  $attribute
+     * @return string
+     */
+    public static function attributeLabel(string $attribute): string
+    {
+        if (isset(self::$attributeLabels) && isset(self::$attributeLabels[$attribute])) {
+            return self::$attributeLabels[$attribute];
+        }
+        return $attribute;
+    }
+
+    /**
+     * @param  array  $data
      * @return bool
      */
     public static function insert(array $data): bool
@@ -57,8 +67,7 @@ trait AppModelHelper
     }
 
     /**
-     * @param array $data
-     *
+     * @param  array  $data
      * @return int
      */
     public static function insertGetId(array $data): int
@@ -68,9 +77,7 @@ trait AppModelHelper
 
     /**
      * 验证数据是否存在
-     *
-     * @param array $option
-     *
+     * @param  array  $option
      * @return bool
      */
     public static function checkExists(array $option): bool
@@ -84,7 +91,6 @@ trait AppModelHelper
 
     /**
      * 获取连接的PDO对象
-     *
      * @return PDO
      * @Author wm
      * @Date   2018/9/5

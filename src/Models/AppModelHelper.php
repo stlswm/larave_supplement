@@ -20,6 +20,7 @@ use PDO;
  * @method static BuilderAlias whereIn(string $column, mixed $values, string $boolean = 'and', bool $not = false)
  * @method static BuilderAlias whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static BuilderAlias findOrFail($id, $columns = ['*'])
+ * @method static self create(array $data)
  */
 trait AppModelHelper
 {

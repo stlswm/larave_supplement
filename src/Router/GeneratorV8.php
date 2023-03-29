@@ -7,6 +7,7 @@ use Exception;
 /**
  * laravel v8后路由生成
  * Class GeneratorV8
+ *
  * @package stlswm\LaravelSupplement\Router
  */
 class GeneratorV8
@@ -30,39 +31,41 @@ class GeneratorV8
 
     /**
      * 开始生成
-     * @param  string  $readDir
-     * @param  string  $routerDir
+     *
+     * @param string $readDir
+     * @param string $routerDir
      * @return bool
      * @throws Exception
      */
-    public static function start(string $readDir, string $routerDir): bool
+    public static function start(string $readDir, string $routerDir, $output = true): bool
     {
         if (!is_dir($readDir)) {
-            throw new Exception($readDir.'is not a dir');
+            throw new Exception($readDir . 'is not a dir');
         }
-        $dh = opendir($readDir);
-        while ($file = readdir($dh)) {
+        $files = scandir($readDir);
+        foreach ($files as $file) {
             if ($file != '.' && $file != '..') {
-                $newPath = $readDir.'/'.$file;
+                $newPath = $readDir . '/' . $file;
                 if (is_dir($newPath)) {
-                    self::start($newPath, $routerDir);
+                    self::start($newPath, $routerDir, false);
                 } else {
                     self::parseFile($newPath);
                 }
             }
         }
-        closedir($dh);
-        file_put_contents($routerDir.'/api.php', join("\n", self::$cache['api']));
-        file_put_contents($routerDir.'/web.php', join("\n", self::$cache['web']));
+        if ($output) {
+            file_put_contents($routerDir . '/api.php', join("\n", self::$cache['api']));
+            file_put_contents($routerDir . '/web.php', join("\n", self::$cache['web']));
+        }
         return true;
     }
 
     /**
-     * @param  string  $file
-     * @param  string  $routerDir
+     * @param string $file
+     * @param string $routerDir
      */
     /**
-     * @param  string  $file
+     * @param string $file
      * @throws Exception
      */
     public static function parseFile(string $file)

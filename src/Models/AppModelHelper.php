@@ -2,25 +2,14 @@
 
 namespace stlswm\LaravelSupplement\Models;
 
-use Illuminate\Database\Eloquent\Builder as BuilderAlias;
-use Illuminate\Database\Eloquent\Collection as CollectionAlias;
-use Illuminate\Database\Eloquent\Model as ModelAlias;
 use Illuminate\Support\Facades\DB;
 use PDO;
 
 /**
  * Trait AppModel
  * @package   App\Models
- * @property array $fieldFlag 状态字段[[string]=>[int=>string]]尽量避开使用0=>string类型的值
+ * @property array  $fieldFlag 状态字段[[string]=>[int=>string]]尽量避开使用0=>string类型的值
  * @property array $attributeLabels 栏位label map[string]string
- * @method static ModelAlias|CollectionAlias|static[]|static|null find(mixed $id, array $columns = ['*'])
- * @method static BuilderAlias select(array | mixed $columns = ["*"])
- * @method static BuilderAlias join(string $table, string $first, string | null $operator = null, string | null $second = null, string $type = 'inner', bool $where = false)
- * @method static BuilderAlias where(mixed $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static BuilderAlias whereIn(string $column, mixed $values, string $boolean = 'and', bool $not = false)
- * @method static BuilderAlias whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
- * @method static BuilderAlias findOrFail($id, $columns = ['*'])
- * @method static self create(array $data)
  */
 trait AppModelHelper
 {

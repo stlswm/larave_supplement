@@ -2,20 +2,30 @@
 
 namespace stlswm\LaravelSupplement\Models;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use PDO;
 
 /**
  * Trait AppModel
  * @package   App\Models
- * @property array  $fieldFlag 状态字段[[string]=>[int=>string]]尽量避开使用0=>string类型的值
+ * @property array $fieldFlag       状态字段[[string]=>[int=>string]]尽量避开使用0=>string类型的值
  * @property array $attributeLabels 栏位label map[string]string
+ * @method static mixed|static find($id, $columns = ['*'])
+ * @method static Builder select(array | mixed $columns = ["*"])
+ * @method static Builder join(string $table, string $first, string | null $operator = null, string | null $second = null, string $type = 'inner', bool $where = false)
+ * @method static Builder leftJoin($table, $first, $operator = null, $second = null)
+ * @method static Builder where(mixed $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder whereIn(string $column, mixed $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
+ * @method static Builder findOrFail($id, $columns = ['*'])
+ * @method static self create(array $data)
  */
 trait AppModelHelper
 {
     /**
      * @param  string  $field
-     * @param  mixed  $value
+     * @param  mixed   $value
      * @return string
      * @Author wm
      * @Date   2018/7/13

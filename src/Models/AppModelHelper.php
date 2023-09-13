@@ -2,7 +2,7 @@
 
 namespace stlswm\LaravelSupplement\Models;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use PDO;
 
@@ -19,6 +19,7 @@ use PDO;
  * @method static Builder whereIn(string $column, mixed $values, string $boolean = 'and', bool $not = false)
  * @method static Builder whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Builder findOrFail($id, $columns = ['*'])
+ * @method static Builder with($id, $columns = ['*'])
  * @method static self create(array $data)
  */
 trait AppModelHelper

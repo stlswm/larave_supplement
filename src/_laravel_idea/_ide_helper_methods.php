@@ -23,3 +23,15 @@ namespace Illuminate\Database\Query {
     {
     }
 }
+
+namespace Illuminate\Support\Facades {
+
+    /**
+     * Class Redis
+     * @package Illuminate\Support\Facades
+     */
+    class Redis extends \Redis
+    {
+
+    }
+}
